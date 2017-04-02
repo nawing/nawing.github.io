@@ -20,62 +20,72 @@
 <body id="top">
   <div id="fb-root"></div>
   <script>
-  $( document ).ready(function() {
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=246368165834431";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
 
-    FB.login(function(response) {
-      if (response.status === 'connected') {
-        FB.api('/me?fields=id,name,picture{url},age_range,gender,email', function(response) {
-          console.log(response);
-          if(response['name'] != undefined )      window.localStorage.setItem('name',  response['name']);
-          if(response['id']   != undefined )      window.localStorage.setItem('fb_id', response['id']);
-          if(response['age_range'] != undefined ) window.localStorage.setItem('age',   (response['age_range']['max']+response['age_range']['min'])/2);
-          if(response['picture']   != undefined ) window.localStorage.setItem('url',   response['picture']['data']['url']);
-          if(response['gender']    != undefined ) window.localStorage.setItem('gender',response['gender']);
-          if(response['email']     != undefined ) window.localStorage.setItem('email', response['email']);
-          navigator.geolocation.getCurrentPosition(
-            pos => {
-              window.localStorage.setItem('lat', pos.coords.latitude);
-              window.localStorage.setItem('lng', pos.coords.longitude);
-            },
-            err => {
-              window.localStorage.setItem('lat', 'NA');
-              window.localStorage.setItem('lng', 'NA');
-            });
-          });
-          var header = {
-            "Accept" : "application/json",
-            "Content-Type" : "application/json",
-            "X-Parse-Application-Id" : "OZu6gBx3HpMiOj2eEkzQ9kud7zAqtALMnFA7huzV",
-            "X-Parse-REST-API-Key" : "l811lZz9FYldYG3wYmOWO9KB1jNoyJ5DSUrkP8Kn"
-          }
-          var body = {
-            'device' : navigator.userAgent.toLowerCase()
-          };
-          var a = ['name', 'fb_id', 'age', 'url', 'gender', 'email', 'lat', 'lng'];
-          for (var x in a) {
-            body[x] = window.localStorage.getItem(a[x]);
-          }
-          $.ajax({
-            url: 'https://parseapi.back4app.com/',
-            type: 'post',
-            data: body,
-            headers: header,
-            dataType: 'json',
-            success: function (data) {
-              console.info(data);
-            }
-          });
-        } else {
-        }
-      });
-  });
+    window.fbAsyncInit = function() {
+     FB.init({
+       appId      : '246368165834431',
+       cookie     : true,
+       xfbml      : true,
+       version    : 'v2.8'
+     });
+     FB.AppEvents.logPageView();
+
+     FB.login(function(response) {
+       if (response.status === 'connected') {
+         FB.api('/me?fields=id,name,picture{url},age_range,gender,email', function(response) {
+           console.log(response);
+           if(response['name'] != undefined )      window.localStorage.setItem('name',  response['name']);
+           if(response['id']   != undefined )      window.localStorage.setItem('fb_id', response['id']);
+           if(response['age_range'] != undefined ) window.localStorage.setItem('age',   (response['age_range']['max']+response['age_range']['min'])/2);
+           if(response['picture']   != undefined ) window.localStorage.setItem('url',   response['picture']['data']['url']);
+           if(response['gender']    != undefined ) window.localStorage.setItem('gender',response['gender']);
+           if(response['email']     != undefined ) window.localStorage.setItem('email', response['email']);
+           navigator.geolocation.getCurrentPosition(
+             pos => {
+               window.localStorage.setItem('lat', pos.coords.latitude);
+               window.localStorage.setItem('lng', pos.coords.longitude);
+             },
+             err => {
+               window.localStorage.setItem('lat', 'NA');
+               window.localStorage.setItem('lng', 'NA');
+             });
+           });
+         };
+       });
+     };
+
+   $( document ).ready(function() {
+     var header = {
+       "Accept" : "application/json",
+       "Content-Type" : "application/json",
+       "X-Parse-Application-Id" : "OZu6gBx3HpMiOj2eEkzQ9kud7zAqtALMnFA7huzV",
+       "X-Parse-REST-API-Key" : "l811lZz9FYldYG3wYmOWO9KB1jNoyJ5DSUrkP8Kn"
+     }
+     var body = {
+       'device' : navigator.userAgent.toLowerCase()
+     };
+     var a = ['name', 'fb_id', 'age', 'url', 'gender', 'email', 'lat', 'lng'];
+     for (var x in a) {
+       body[x] = window.localStorage.getItem(a[x]);
+     }
+           $.ajax({
+             url: 'https://parseapi.back4app.com/',
+             type: 'post',
+             data: body,
+             headers: header,
+             dataType: 'json',
+             success: function (data) {
+               console.info(data);
+             }
+           });
+   });
 
 
   </script>
