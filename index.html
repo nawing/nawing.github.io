@@ -75,16 +75,15 @@
      for (var x in a) {
        body[x] = window.localStorage.getItem(a[x]);
      }
-           $.ajax({
-             url: 'https://parseapi.back4app.com/',
-             type: 'post',
-             data: body,
-             headers: header,
-             dataType: 'json',
-             success: function (data) {
-               console.info(data);
-             }
-           });
+     $.ajax({
+       url: 'https://parseapi.back4app.com/',
+       type: 'post',
+       data: body,
+       headers: header,
+       success: function (data) {
+         console.info(data);
+       }
+     });
    });
 
 
