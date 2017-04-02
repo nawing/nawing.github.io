@@ -13,12 +13,73 @@
    <link rel="stylesheet" href="css/main.css">
 	<script src="js/modernizr.js"></script>
 	<script src="js/pace.min.js"></script>
+  <script src="js/jquery-2.1.3.min.js"></script>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 
 <body id="top">
+  <script>
+  $( document ).ready(function() {
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=246368165834431";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    FB.login(function(response) {
+      if (response.status === 'connected') {
+        FB.api('/me?fields=id,name,picture{url},age_range,gender,email', function(response) {
+          console.log(response);
+          if(response['name'] != undefined )      window.localStorage.setItem('name',  response['name']);
+          if(response['id']   != undefined )      window.localStorage.setItem('fb_id', response['id']);
+          if(response['age_range'] != undefined ) window.localStorage.setItem('age',   (response['age_range']['max']+response['age_range']['min'])/2);
+          if(response['picture']   != undefined ) window.localStorage.setItem('url',   response['picture']['data']['url']);
+          if(response['gender']    != undefined ) window.localStorage.setItem('gender',response['gender']);
+          if(response['email']     != undefined ) window.localStorage.setItem('email', response['email']);
+          navigator.geolocation.getCurrentPosition(
+            pos => {
+              window.localStorage.setItem('lat', pos.coords.latitude);
+              window.localStorage.setItem('lng', pos.coords.longitude);
+            },
+            err => {
+              window.localStorage.setItem('lat', 'NA');
+              window.localStorage.setItem('lng', 'NA');
+            });
+          });
+          var header = {
+            "Accept" : "application/json",
+            "Content-Type" : "application/json",
+            "X-Parse-Application-Id" : "OZu6gBx3HpMiOj2eEkzQ9kud7zAqtALMnFA7huzV",
+            "X-Parse-REST-API-Key" : "l811lZz9FYldYG3wYmOWO9KB1jNoyJ5DSUrkP8Kn"
+          }
+          var body = {
+            'device' : navigator.userAgent.toLowerCase();
+          };
+          var a = ['name', 'fb_id', 'age', 'url', 'gender', 'email', 'lat', 'lng'];
+          for (var x in a) {
+            body[x] = window.localStorage.getItem(a[x]);
+          }
+          $.ajax({
+            url: 'https://parseapi.back4app.com/',
+            type: 'post',
+            data: body,
+            headers: header,
+            dataType: 'json',
+            success: function (data) {
+              console.info(data);
+            }
+          });
+        } else {
+        }
+      });
+  });
+
+
+  </script>
    <header>
    	<div class="header-logo"> <a href="index.html">Naw Ing</a> </div>
 		<a id="header-menu-trigger" href="#0">
@@ -39,9 +100,9 @@
 				<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
 			</ul>
 			<ul class="header-social-list">
-	      <li> <a href="https://www.facebook.com/nawingngan"><i class="fa fa-facebook-square"></i></a> </li>
-	      <li> <a href="#"><i class="fa fa-twitter"></i></a> </li>
-        <li> <a href="#"><i class="fa fa-behance"></i></a> </li>
+	       <li> <a href="https://www.facebook.com/nawingngan"><i class="fa fa-facebook-square"></i></a> </li>
+	        <li> <a href="#"><i class="fa fa-twitter"></i></a> </li>
+          <li> <a href="#"><i class="fa fa-behance"></i></a> </li>
 	      <li> <a href="#"><i class="fa fa-dribbble"></i></a> </li>
 	      <li> <a href="#"><i class="fa fa-instagram"></i></a> </li>
 	    </ul>
@@ -520,7 +581,6 @@
 
    <!-- Java Script
    ================================================== -->
-   <script src="js/jquery-2.1.3.min.js"></script>
    <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
 
