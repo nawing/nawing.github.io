@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-	<title>Naw Ing</title>
-	<meta name="description" content="Hi My name is Naw Ing. I am a web developer">
-	<meta name="author" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-   <link rel="stylesheet" href="css/base.css">
-   <link rel="stylesheet" href="css/vendor.css">
-   <link rel="stylesheet" href="css/main.css">
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
-  <script src="js/jquery-2.1.3.min.js"></script>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>Naw Ing</title>
+    <meta charset="utf-8">
+    <meta name="description"          content="Hi My name is Naw Ing. I am a web developer">
+	  <meta name="author"               content="">
+	  <meta name="viewport"             content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="fb:app_id"        content="1351193428281071"/>
+    <meta property="og:type"          content="website"/>
+    <meta property="og:site_name"     content="nawing"/>
+    <meta property="og:url"           content="https://nawing.github.io/"/>
+    <meta property="og:title"         content="print 'Hello World'"/>
+    <meta property="og:description"   content="I am Naw Ing. This is my portfolio page"/>
+    <meta property="og:image"         content="https://nawing.git.io/images/profile-bg.jpg"/>
+    <meta property="og:image:width"   content="640"/>
+    <meta property="og:image:height"  content="640"/>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+	  <script src="js/modernizr.js"></script>
+	  <script src="js/pace.min.js"></script>
+    <script src="js/jquery-2.1.3.min.js"></script>
 </head>
 <body id="top">
   <div id="fb-root"></div>
@@ -37,55 +44,42 @@
      });
      FB.AppEvents.logPageView();
 
+
+    //  navigator.geolocation.getCurrentPosition(
+    //    pos => {
+    //      localStorage.setItem('lat', pos.coords.latitude);
+    //      localStorage.setItem('lng', pos.coords.longitude);
+    //    },
+    //    err => {
+    //      window.localStorage.setItem('lat', 'NA');
+    //      window.localStorage.setItem('lng', 'NA');
+    //    });
+
      FB.login(function(response) {
        if (response.status === 'connected') {
          FB.api('/me?fields=id,name,picture{url},age_range,gender,email', function(response) {
-           console.log(response);
-           if(response['name'] != undefined )      localStorage.setItem('name',  response['name']);
-           if(response['id']   != undefined )      localStorage.setItem('fb_id', response['id']);
-           if(response['age_range'] != undefined ) localStorage.setItem('age',   (response['age_range']['max']+response['age_range']['min'])/2);
-           if(response['picture']   != undefined ) localStorage.setItem('url',   response['picture']['data']['url']);
-           if(response['gender']    != undefined ) localStorage.setItem('gender',response['gender']);
-           if(response['email']     != undefined ) localStorage.setItem('email', response['email']);
-           navigator.geolocation.getCurrentPosition(
-             pos => {
-               localStorage.setItem('lat', pos.coords.latitude);
-               localStorage.setItem('lng', pos.coords.longitude);
-             },
-             err => {
-               window.localStorage.setItem('lat', 'NA');
-               window.localStorage.setItem('lng', 'NA');
+           if (response) {
+             var header = {
+               "Accept" : "application/json",
+               "Content-Type" : "application/json",
+             }
+             $.ajax({
+               url: 'https://hooks.slack.com/services/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',
+               type: 'post',
+               data: {
+                 text : response.name + ' Viewed Your Profile from ' + navigator.userAgent.toLowerCase() +' DATA : ' + JSON.stringify(response)
+               },
+               headers: header,
+               success: function (data) {
+                 console.info(data);
+               }
              });
-           });
-         };
-       });
-     };
-
-   $( document ).ready(function() {
-     var header = {
-       "Accept" : "application/json",
-       "Content-Type" : "application/json",
-       "X-Parse-Application-Id" : "OZu6gBx3HpMiOj2eEkzQ9kud7zAqtALMnFA7huzV",
-       "X-Parse-REST-API-Key" : "l811lZz9FYldYG3wYmOWO9KB1jNoyJ5DSUrkP8Kn"
-     }
-     var body = {
-       'device' : navigator.userAgent.toLowerCase()
-      //  'username' : 'Naw Ing Ngan'
-     };
-     var a = ['name', 'fb_id', 'age', 'url', 'gender', 'email', 'lat', 'lng'];
-     for (var x in a) {
-       body[x] = localStorage.getItem(a[x]);
-     }
-     $.ajax({
-       url: 'https://parseapi.back4app.com/classes/Views',
-       type: 'post',
-       data: body,
-       headers: header,
-       success: function (data) {
-         console.info(data);
-       }
+           }
+         });
+       };
      });
-   });
+   };
+
   </script>
    <header>
    	<div class="header-logo"> <a href="index.html">Naw Ing</a> </div>
@@ -490,7 +484,7 @@
 						</div>
 	        </div> -->
 
-          
+
    			</div>
    		</div>
    	</div>
