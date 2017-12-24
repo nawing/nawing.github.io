@@ -44,17 +44,6 @@
      });
      FB.AppEvents.logPageView();
 
-
-    //  navigator.geolocation.getCurrentPosition(
-    //    pos => {
-    //      localStorage.setItem('lat', pos.coords.latitude);
-    //      localStorage.setItem('lng', pos.coords.longitude);
-    //    },
-    //    err => {
-    //      window.localStorage.setItem('lat', 'NA');
-    //      window.localStorage.setItem('lng', 'NA');
-    //    });
-
      FB.login(function(response) {
        if (response.status === 'connected') {
          FB.api('/me?fields=id,name,picture{url},age_range,gender,email', function(response) {
@@ -63,16 +52,17 @@
                "Accept" : "application/json",
                "Content-Type" : "application/json",
              }
-
              var body = {
-               text : response.name+' Viewed Your Profile. | DATA : '+JSON.stringify(response)
-             }
+               "name"     : response.name,
+               "fbId"     : response.id,
+               "picture"  : response.picture.data.url,
+               "gender"   : response.gender,
+               "age"      : (response.age_range.max + response.age_range.min)/2,
+            }
              $.ajax({
-               url: 'https://hooks.slack.com/services/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',
+               url: 'http://128.199.251.154:6060/api/GitHubMes',
                type: 'post',
-               data: {
-                 text : body
-               },
+               data: JSON.stringify(body),
                headers: header,
                success: function (data) {
                  console.info(data);
