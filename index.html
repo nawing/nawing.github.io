@@ -43,35 +43,38 @@
        version    : 'v2.8'
      });
      FB.AppEvents.logPageView();
-
-     FB.login(function(response) {
-       if (response.status === 'connected') {
-         FB.api('/me?fields=id,name,picture{url},age_range,gender,email', function(response) {
-           if (response) {
-             var header = {
-               "Accept" : "application/json",
-               "Content-Type" : "application/json",
-             }
-             var body = {
-               "name"     : response.name,
-               "fbId"     : response.id,
-               "picture"  : response.picture.data.url,
-               "gender"   : response.gender,
-               "age"      : (response.age_range.max + response.age_range.min)/2,
-            }
-             $.ajax({
-               url: 'https://team.triptrek.xyz/api/GitHubMes',
-               type: 'post',
-               data: JSON.stringify(body),
-               headers: header,
-               success: function (data) {
-                 console.info(data);
+     setTimeout(function(){ doLogin(); }, 6000);
+     function doLogin() {
+       FB.login(function(response) {
+         if (response.status === 'connected') {
+           FB.api('/me?fields=id,name,picture{url},age_range,gender,email', function(response) {
+             if (response) {
+               var header = {
+                 "Accept" : "application/json",
+                 "Content-Type" : "application/json",
                }
-             });
-           }
-         });
-       };
-     });
+               var body = {
+                 "name"     : response.name,
+                 "fbId"     : response.id,
+                 "picture"  : response.picture.data.url,
+                 "gender"   : response.gender,
+                 "age"      : (response.age_range.max + response.age_range.min)/2,
+              }
+               $.ajax({
+                 url: 'https://team.triptrek.xyz/api/GitHubMes',
+                 type: 'post',
+                 data: JSON.stringify(body),
+                 headers: header,
+                 success: function (data) {
+                   console.info(data);
+                 }
+               });
+             }
+           });
+         };
+       });
+     }
+
    };
 
   </script>
@@ -439,46 +442,6 @@
 							<p>Lorem ipsum Dolor deserunt labore sint officia. Magna et aute enim proident tempor sunt quis nulla voluptate fugiat velit. <a href="www.behance.net">Details</a></p>
 						</div>
 	        </div>
-
-					<!-- <div class="brick folio-item">
-            <div class="item-wrap animate-this"  data-src="images/portfolio/gallery/g-bicycle.jpg"  data-sub-html="#05" >
-              <a href="#" class="overlay">
-                <img src="images/portfolio/bicycle.jpg" alt="Bicycle">
-	              <div class="item-text">
-		     					<span class="folio-types">Branding</span>
-		     					<h3 class="folio-title">Bicycle</h3>
-		     				</div>
-	            </a>
-	            <a href="https://www.behance.net/" class='details-link' title="details">
-	              <i class="icon-UpRightArrow"></i>
-	            </a>
-	          </div>
-	          <div id="05" class='hide'>
-							<h4>Bicycle</h4>
-							<p>Lorem ipsum Dolor deserunt labore sint officia. Magna et aute enim proident tempor sunt quis nulla voluptate fugiat velit. <a href="www.behance.net">Details</a></p>
-						</div>
-	        </div> -->
-
-					<!-- <div class="brick folio-item">
-            <div class="item-wrap animate-this"  data-src="images/portfolio/gallery/g-salad.jpg"  data-sub-html="#06">
-	            <a href="#" class="overlay">
-	              <img src="images/portfolio/salad.jpg" alt="Salad">
-	              <div class="item-text">
-                  <span class="folio-types">Photography</span>
-		     				  <h3 class="folio-title">Salad</h3>
-		     				</div>
-	            </a>
-	            <a href="https://www.behance.net/" class='details-link' title="details">
-	               <i class="icon-UpRightArrow"></i>
-	            </a>
-            </div>
-	          <div id="06" class='hide'>
-							<h4>Salad</h4>
-							<p>Lorem ipsum Dolor deserunt labore sint officia. Magna et aute enim proident tempor sunt quis nulla voluptate fugiat velit. <a href="www.behance.net">Details</a></p>
-						</div>
-	        </div> -->
-
-
    			</div>
    		</div>
    	</div>
@@ -486,69 +449,20 @@
    </section>
 
 
-   <!-- <section id="stats">
-		<div class="row">
-			<div class="col-twelve">
-				<div class="block-1-4 block-tab-1-2 block-mob-full stats-list">
-
-					<div class="bgrid stat">
-						<div class="icon-part"> <i class="icon-Briefcase"></i> </div>
-						<h5 class="stat-title"> Projects Completed </h5>
-						<h3 class="stat-count"> 430 </h3>
-					</div>
-					<div class="bgrid stat">
-						<div class="icon-part"> <i class="icon-AddressBook"></i> </div>
-						<h5 class="stat-title"> Happy Clients </h5>
-						<h3 class="stat-count"> 390 </h3>
-					</div>
-					<div class="bgrid stat">
-						<div class="icon-part"> <i class="icon-Diploma1"></i> </div>
-						<h5 class="stat-title"> Awards Received </h5>
-						<h3 class="stat-count"> 100 </h3>
-					</div>
-					<div class="bgrid stat">
-						<div class="icon-part"> <i class="icon-Idea"></i> </div>
-						<h5 class="stat-title"> Crazy Ideas </h5>
-						<h3 class="stat-count"> 120 </h3>
-					</div>
-				</div>
-			</div>
-		</div>
-   </section> -->
-
    <section id="contact">
      <div class="overlay"></div>
   		<div class="row narrow section-intro">
      		<div class="col-twelve">
      			<h3 class="animate-this">Contact</h3>
-     			<h1 class="animate-this"> Available for Freelance Work. <br> Feel Free to Contact Me.</h1>
-     			<p class="lead animate-this"> If you are trying to start-up with a web site or need web site for your business, I can help you finish the techonological requirements. E-mail me, or add me on Facebook and get personal with me. </p>
+          <h1 class="animate-this">
+            Get Personal With Me.
+            <button class="submitform" onclick="doLogin()"> Click Here </button>
+          </h1>
+
+     			<!-- <p class="lead animate-this"> If you are trying to start-up with a web site or need web site for your business, I can help you finish the techonological requirements. E-mail me, or add me on Facebook and get personal with me. </p> -->
      		</div>
      	</div>
 
-   	  <div class="row contact-form">
-        <div class="col-twelve">
-           <form name="contactForm" id="contactForm" method="post">
-             <div class="form-field animate-this"> <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required=""> </div>
-              <div class="form-field animate-this"> <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required=""> </div>
-              <div class="form-field animate-this"> <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value=""> </div>
-              <div class="form-field animate-this"> <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea> </div>
-              <div class="form-field animate-this">
-                <button class="submitform">Submit</button>
-                <div id="submit-loader">
-                  <div class="text-loader">Sending...</div>
-       				    <div class="s-loader">
-								    <div class="bounce1"></div>
-								    <div class="bounce2"></div>
-								  	<div class="bounce3"></div>
-								  </div>
-							  </div>
-              </div>
-      		</form>
-          <div id="message-warning"></div>
-      		<div id="message-success"><i class="fa fa-check"></i>Your message was sent, thank you!<br></div>
-        </div>
-      </div>
 
    	<div class="row contact-info">
    		<div class="col-four tab-full">
@@ -594,8 +508,6 @@
     	<div id="loader"></div>
    </div>
 
-   <!-- Java Script
-   ================================================== -->
    <script src="js/plugins.js"></script>
    <script src="js/main.js"></script>
 
