@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Naw Ing",
+  "version": "0.0.2",
+  "default_locale": "en",
+  "description": "JavaScript Full Stack Developer",
+  "icons": "/icon.png",
+  "homepage_url": "https://nawing.github.io/",
+  "short_name": "Naw Ing",
+  "version_name": "nawing.beta",
+  "display": "fullscreen"
+}
