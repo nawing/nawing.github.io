@@ -31,6 +31,12 @@
   <link href="assets/css/theme.css" rel="stylesheet" />
   <link href="assets/css/user.css" rel="stylesheet" />
 
+  <style>
+    .btn-primary {
+      background-color: #004aad !important;
+    }
+  </style>
+
 </head>
 
 
@@ -56,7 +62,7 @@
             <!-- <li class="nav-item"><a class="nav-link px-3" href="#pricing">Pricing</a></li> -->
             <!-- <li class="nav-item"><a class="nav-link pl-3 me-3" href="#docs">Docs </a></li> -->
           </ul>
-          <button class="btn btn-primary"> Get Connected</button>
+          <button class="btn btn-primary" onclick="callNumber()"> Get Connected </button>
         </div>
       </div>
     </nav>
@@ -64,29 +70,24 @@
       <div class="bg-holder bg-size"
         style="background-image:url(assets/img/illustration/2.png);background-position:left top;background-size:contain;">
       </div>
-      <!--/.bg-holder-->
 
       <div class="bg-holder d-none d-xxl-block hero-bg"
         style="background-image:url(assets/img/illustration/1.png);background-position:right top;background-size:contain;">
       </div>
-      <!--/.bg-holder-->
 
       <div class="container">
         <div class="row align-items-center h-100 justify-content-center justify-content-lg-start">
           <div class="col-md-9 col-xxl-5 text-md-start text-center py-6 pt-8">
             <h1 class="fs-4 fs-md-5 fs-xxl-4" data-zanim-xs='{"delay":0.3}' data-zanim-trigger="scroll">
-              AYAZ
+              AYAZ Technologies
             </h1>
             <p class="fs-1" data-zanim-xs='{"delay":0.5}' data-zanim-trigger="scroll">
               We build customized business applications.
-              The team comprises top-notch javascript developers with at least 10 years of experience in start ups.
+              The team comprises top-notch javascript developers with at least 10 years of experiences.
             </p>
             <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-md-start mt-5"
               data-zanim-xs='{"delay":0.5}' data-zanim-trigger="scroll">
-              <a class="btn btn-sm btn-primary me-1" href="#!" role="button"> Get Connected </a>
-              <!-- <a class="btn btn-sm btn-default" href="#" role="button">
-                Questions? Talk to our team<i class="fas fa-arrow-right ms-2"></i>
-              </a> -->
+              <a class="btn btn-sm btn-primary me-1" role="button" onclick="callNumber()"> Get Connected </a>
             </div>
           </div>
         </div>
@@ -97,20 +98,16 @@
     <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section id="customers">
-
       <div class="container">
         <h1 class="text-center display-5 fw-semi-bold" data-zanim-xs='{"delay":0.3}' data-zanim-trigger="scroll">
           Our vision is to play a vital role in Digital Transformation in Myanmar.
         </h1>
-        <!-- <p class="text-center fs-0 fs-md-1" data-zanim-xs='{"delay":0.5}' data-zanim-trigger="scroll">
-        </p> -->
         <div class="row mb-4 mt-6">
           <div class="col-md-12 col-lg-12 text-center">
-            <!-- <img src="assets/img/icons/4.png" alt="Dashboard" style="width:95px;" /> -->
             <h4 class="mt-3 lh-base"> Our Mission </h4>
             <p class="fs-0">
-              Our mission is help our partners develop Digital Resilience Strategies and Execute Successful Change
-              Management Projects by building and exploring creative ways to apply advanced business technologies .
+              Our mission is help our partners develop <span style="font-weight: bold;"> Digital Resilience Strategies </span>  and Execute <span style="font-weight: bold;"> Successful Change
+              Management Projects </span> by building and exploring creative ways to apply advanced business technologies .
             </p>
             <br>
             <p>
@@ -119,23 +116,18 @@
                 <span style="font-weight: bold;"> Stealth, Control, Secure & Transform </span>
               </small>
             </p>
+            <br>
           </div>
         </div>
       </div>
     </section>
 
 
-
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
-
-
-
     <section>
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-5 mb-4">
-            <iframe style="width: 100%;" height="424" src="https://www.youtube.com/embed/L7hPsYZB-jo" title="EDMS Promo"
+            <iframe style="width: 100%;" height="300" src="https://www.youtube.com/embed/L7hPsYZB-jo" title="EDMS Promo"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -145,7 +137,7 @@
               Success Story 1
             </h4>
             <p class="fs-0 pe-xl-7" data-zanim-xs='{"delay":0.5}' data-zanim-trigger="scroll">
-              (EDMS) Business Communications and Document Management System with Insightful Control Systems For
+              (EDMS) Electronic Document Management System with Insightful Control & Communications Features For
               Enterprises
               <br>
               <small>
@@ -167,11 +159,11 @@
                 <p class="my-1 fs-0 pe-xl-8"> PWA Applications </p>
               </div>
             </div>
-            <button class="btn btn-sm btn-primary btn-bg-purple my-4 me-1" href="#!" role="button">
+            <button class="btn btn-sm btn-primary btn-bg-purple my-4 me-1" onclick="callNumber()">
               Connect Us
             </button>
-            <a class="btn btn-sm my-2 btn-default" href="#" role="button">
-              Explore Ways For Your Organization To Become Paperless <i class="fas fa-arrow-right ms-2"></i>
+            <a class="btn btn-sm my-2 btn-default" onclick="callNumber()">
+              Become Paperless Organization With Us <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
         </div>
@@ -186,7 +178,7 @@
               Success Story 2
             </h4>
             <p class="fs-0 pe-xl-8" data-zanim-xs='{"delay":0.5}' data-zanim-trigger="scroll">
-              Content Monetization Business Tools For Media Companies
+              Largest Job Portal In Myanmar
               <br>
               <small>
                 <span style="font-weight: bold;"> Featured Story: </span>
@@ -212,11 +204,11 @@
                 </p>
               </div>
             </div>
-            <button class="btn btn-sm btn-primary my-4 me-1" href="#!" role="button">
+            <button class="btn btn-sm btn-primary my-4 me-1" onclick="callNumber()">
               Get connected
             </button>
-            <a class="btn btn-sm my-2 btn-default" href="#" role="button">
-              Explore ways to monetizate your contents <i class="fas fa-arrow-right ms-2"></i>
+            <a class="btn btn-sm my-2 btn-default" onclick="callNumber()">
+              Let's Build Information Portal Businss <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
           <div class="col-md-4 mb-4">
@@ -232,20 +224,19 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-4 mb-4">
-            <img src="assets/img/gallery/container.webp" style="width: 100%;">
+            <img src="assets/img/illustration/5.png" style="width: 100%;">
           </div>
           <div class="col-md-8 text-center text-md-start">
             <h4 class="fs-3 fw-normal" data-zanim-xs='{"delay":0.3}' data-zanim-trigger="scroll">
               Success Story 3
             </h4>
             <p class="fs-0 pe-xl-7" data-zanim-xs='{"delay":0.5}' data-zanim-trigger="scroll">
-              Realtime Business Communications Management Tool & Anti-corruption Managment Tools For Export/Import
-              Industry
+              Realtime Information Control & Communications Management System; Anti-theft and Anti-corruption tools For Export/Import Industry
               <br>
               <small>
-                With our team, we explored ways to prevent and recover item loss.
-                Effective implementation of this control tool has reduced corruption in many ways
-                and improved communications with the parties involved in the trade.
+                With our team, we explored ways to prevent and recover item loss in the process of trade. Information flow is essential for loss prevention in this business.
+                Effective implementation of this tracking & business information control tool has reduced corruption and prevented loss in many ways
+                and improved communications among the parties involved in the trade.
               </small>
             </p>
             <div class="d-flex justify-content-space-between align-item-center my-3 mt-2">
@@ -267,11 +258,11 @@
                 <p class="my-1 fs-0 pe-xl-8"> PWA Applications </p>
               </div>
             </div>
-            <button class="btn btn-sm btn-primary btn-bg-purple my-4 me-1" href="#!" role="button">
+            <button class="btn btn-sm btn-primary btn-bg-purple my-4 me-1" onclick="callNumber()">
               Connect Us
             </button>
-            <a class="btn btn-sm my-2 btn-default" href="#" role="button">
-              Explore Ways For Your Organization To Become Paperless <i class="fas fa-arrow-right ms-2"></i>
+            <a class="btn btn-sm my-2 btn-default" onclick="callNumber()">
+              Information Flow Is Key For Loss Prevention <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
         </div>
@@ -346,10 +337,10 @@
                 </p>
               </div>
             </div>
-            <button class="btn btn-sm btn-primary my-4 me-1" href="#!" role="button">
+            <button class="btn btn-sm btn-primary my-4 me-1" onclick="callNumber()">
               Get connected
             </button>
-            <a class="btn btn-sm my-2 btn-default" href="#" role="button">
+            <a class="btn btn-sm my-2 btn-default" onclick="callNumber()">
               Explore ways to monetizate your contents <i class="fas fa-arrow-right ms-2"></i>
             </a>
           </div>
@@ -364,11 +355,11 @@
     <section class="py-0 bg-1000">
       <div class="container">
         <div class="row py-7">
-          <div class="col-12 text-right">
-            <p class="lh-lg fw-bold text-light font-sas-serif text-right" style="text-align: right;">
+          <!-- <div class="col-12 text-center">
+            <p class="lh-lg fw-bold text-light font-sas-serif">
               Our Honorable Clients
             </p>
-          </div>
+          </div> -->
 
           <div class="col-12 col-sm-12 col-lg-6 mb-4 order-0 order-sm-0">
             <p class="text-decoration-none text-light text-bold" style="font-weight: bold;">
@@ -378,7 +369,6 @@
               MM: +95 9260009618 <br>
               MM: +95 9686601159
             </p>
-            <p class="text-light mt-4 mb-0"></p>
             <p class="text-light mt-5"> nawingngan@gmail.com </p>
           </div>
 
@@ -386,7 +376,7 @@
             <h5 class="lh-lg fw-bold text-light font-sans-serif"> Manufacturing </h5>
             <ul class="list-unstyled text-light mb-md-4 mb-lg-0">
               <li class="lh-lg">
-                <a class="text-500 footer-link text-light" href="#!"> Myanamar Honey Food Factory </a>
+                <a class="text-500 footer-link text-light" href="https://www.myanmarhoneyfood.com" target="_blank"> Myanamar Honey Food Factory </a>
               </li>
             </ul>
           </div>
@@ -394,10 +384,10 @@
             <h5 class="lh-lg fw-bold text-light font-sans-serif"> Export Industry </h5>
             <ul class="list-unstyled text-light mb-md-4 mb-lg-0">
               <li class="lh-lg">
-                <a class="text-500 footer-link text-light" href="#!"> Min Theikdi Aung </a>
+                <a class="text-500 footer-link text-light" href="https://www.mintheikdiaung.com/" target="_blank"> Min Theikdi Aung </a>
               </li>
               <li class="lh-lg">
-                <a class="text-500 footer-link text-light" href="#!"> Goodluck Than Than </a>
+                <a class="text-500 footer-link text-light" href="https://www.goodluckthanthan.com/"> Goodluck Than Than </a>
               </li>
             </ul>
           </div>
@@ -419,18 +409,26 @@
       </div>
 
 
-      <!-- ============================================-->
-      <!-- <section> begin ============================-->
       <section class="py-0 bg-1000">
-
         <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <p>
+                <small>
+                  <a href="https://www.triptrek.asia" target="_blank">
+                  TripTrek
+                  </a> is acquired by AYAZ for the technologies developed such as messenger chatbots and other AI LLM tools. TripTrek team has been under AYAZ leadership since July 1st, 2024.
+                </small>
+              </p>
+            </div>
+          </div>
           <div class="row justify-content-md-between justify-content-evenly py-3">
             <div class="col-12 col-sm-8 col-md-6 col-lg-auto text-center text-md-start">
               <p class="fs--1 my-2 fw-bold text-200">&copy; 2025 AYAZ Technologies </p>
             </div>
             <div class="col-12 col-sm-8 col-md-6">
               <p class="fs--1 my-2 text-center text-md-end text-200">
-                10 A Thirimingalar Street, Kamaryut Township, Yangon
+                10 (A) Thirimingalar Street, Kamaryut Township, Yangon
               </p>
             </div>
           </div>
@@ -461,6 +459,12 @@
   <script src="vendors/gsap/scrollToPlugin.js"></script>
   <!--script(src=`${CWD}vendors/gsap/drawSVGPlugin.js`)-->
   <script src="assets/js/theme.js"></script>
+
+  <script>
+    function callNumber() {
+        window.location.href = "tel:+959686601159";
+    }
+  </script>
 
 </body>
 
